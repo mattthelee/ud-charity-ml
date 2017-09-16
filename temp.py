@@ -132,13 +132,13 @@ clf = tree.DecisionTreeClassifier(random_state = 0)
 
 # TODO: Create the parameters list you wish to tune, using a dictionary if needed.
 # HINT: parameters = {'parameter_1': [value1, value2], 'parameter_2': [value1, value2]}
-parameters = {'max_depth': range(1,15),'random_state': [0]}
+parameters = {'max_depth': range(1,20),'random_state': [0]}
 
 # TODO: Make an fbeta_score scoring object using make_scorer()
 scorer = make_scorer(fbeta_score,beta = 0.5)
 
 # TODO: Perform grid search on the classifier using 'scorer' as the scoring method using GridSearchCV()
-grid_obj = GridSearchCV(clf,parameters,scorer)
+grid_obj = GridSearchCV(clf,parameters,scoring= scorer)
 
 # TODO: Fit the grid search object to the training data and find the optimal parameters using fit()
 grid_fit = grid_obj.fit(X_train,y_train)
